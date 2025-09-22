@@ -1,14 +1,19 @@
+import { Suspense } from "react";
 import "./App.css";
+import Bottles from "./Components/Bottles/Bottles";
+// import Bottle from "./Components/Bottle/Bottle";
+
+const bottlesPromise = fetch("../public/bottles.json").then((response) =>
+  response.json()
+);
 
 function App() {
-
   return (
     <>
-      <h1 className="text-5xl font-bold">Start Your Coding Here</h1>
-      <p className="my-4">Hello world</p>
-      <p className="mb-4">Will upload to netlify</p>
-      <p className="mb-4">Will upload to netlify for update</p>
-      <button>Button</button>
+      <Suspense fallback="Please wait...">
+        <Bottles bottlesPromise={bottlesPromise}></Bottles>
+      </Suspense>
+      {/* <Bottle></Bottle> */}
     </>
   );
 }
