@@ -1,21 +1,27 @@
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import "./App.css";
 import Bottles from "./Components/Bottles/Bottles";
 import Header from "./Components/Header";
-// import Bottle from "./Components/Bottle/Bottle";
 
 const bottlesPromise = fetch("../public/bottles.json").then((response) =>
   response.json()
 );
 
 function App() {
+  const [cart, setCart] = useState([]);
+
   return (
     <>
-    <Header></Header>
-      <Suspense fallback={<p className="text-4xl font-bold text-cyan-200 text-center">Please wait...</p>}>
-        <Bottles bottlesPromise={bottlesPromise}></Bottles>
+      <Header cart={cart}></Header>
+      <Suspense
+        fallback={
+          <p className="text-4xl font-bold text-cyan-200 text-center">
+            Please wait...
+          </p>
+        }
+      >
+        <Bottles bottlesPromise={bottlesPromise} cart={cart} setCart={setCart}></Bottles>
       </Suspense>
-      {/* <Bottle></Bottle> */}
     </>
   );
 }
