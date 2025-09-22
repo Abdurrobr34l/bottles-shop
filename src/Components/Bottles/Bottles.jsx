@@ -11,11 +11,11 @@ export default function Bottles({ bottlesPromise, cart, setCart }) {
 
   return (
     <>
-      <h2 className="mb-10 text-3xl font-black text-center">
+      <h2 className="mb-10 text-2xl font-black text-center md:text-3xl">
         Total Bottles in Stoke: {bottles.length}
       </h2>
 
-      <div className="grid grid-cols-5 gap-5">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {bottles.map((bottle) => (
           <Bottle
             cartButton={cartButton}

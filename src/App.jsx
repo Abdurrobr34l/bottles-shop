@@ -2,6 +2,7 @@ import { Suspense, useState } from "react";
 import "./App.css";
 import Bottles from "./Components/Bottles/Bottles";
 import Header from "./Components/Header";
+import LocalStorage from "./Utilitise/LocalStorage";
 
 const bottlesPromise = fetch("../public/bottles.json").then((response) =>
   response.json()
@@ -20,8 +21,13 @@ function App() {
           </p>
         }
       >
-        <Bottles bottlesPromise={bottlesPromise} cart={cart} setCart={setCart}></Bottles>
+        <Bottles
+          bottlesPromise={bottlesPromise}
+          cart={cart}
+          setCart={setCart}
+        ></Bottles>
       </Suspense>
+      <LocalStorage></LocalStorage>
     </>
   );
 }
