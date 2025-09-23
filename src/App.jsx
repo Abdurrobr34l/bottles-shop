@@ -3,7 +3,7 @@ import "./App.css";
 import Bottles from "./Components/Bottles/Bottles";
 import Header from "./Components/Header";
 
-const bottlesPromise = fetch("../public/bottles.json").then((response) =>
+const bottlesPromise = fetch("./assets/bottles.json").then((response) =>
   response.json()
 );
 
